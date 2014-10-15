@@ -35,7 +35,8 @@ def new_game():
 
 def draw(canvas):
     global score1, score2, paddle1_pos, paddle2_pos, ball_pos, ball_vel
- 
+    paddle1_pos = [0, HEIGHT / 2 - PAD_HEIGHT / 2]
+    paddle2_pos = [(WIDTH - 1) - PAD_WIDTH, HEIGHT / 2 - PAD_HEIGHT / 2]
         
     # draw mid line and gutters
     canvas.draw_line([WIDTH / 2, 0],[WIDTH / 2, HEIGHT], 1, "White")
@@ -67,14 +68,15 @@ def draw(canvas):
     
     # update paddle's vertical position, keep paddle on the screen
     
-    # draw paddles
-    # left paddle
-    canvas.draw_polygon([[0, HEIGHT / 2 - PAD_HEIGHT / 2],
-                         [PAD_WIDTH, HEIGHT / 2 - PAD_HEIGHT / 2],
-                         [PAD_WIDTH, HEIGHT / 2 + PAD_HEIGHT / 2],
-                         [0, HEIGHT / 2 + PAD_HEIGHT / 2]], 2, 'WHITE', "WHITE")
     
-    # right paddle
+    # draw paddles
+    # left paddle (paddle1)
+    canvas.draw_polygon([paddle1_pos,
+                         [paddle1_pos[0] + PAD_WIDTH, paddle1_pos[1]],
+                         [paddle1_pos[0] + PAD_WIDTH, paddle1_pos[1] + PAD_HEIGHT],
+                         [paddle1_pos[0], paddle1_pos[1] + PAD_HEIGHT]], 2, 'WHITE', "WHITE")
+    
+    # right paddle (paddle2)
     canvas.draw_polygon([[(WIDTH - 1) - PAD_WIDTH, HEIGHT / 2 - PAD_HEIGHT / 2],
                          [(WIDTH - 1), HEIGHT / 2 - PAD_HEIGHT / 2],
                          [(WIDTH - 1), HEIGHT / 2 + PAD_HEIGHT / 2],
