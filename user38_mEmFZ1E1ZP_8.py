@@ -71,7 +71,17 @@ def draw(canvas):
         ball_vel[1] = - ball_vel[1]
     
     # update paddle's vertical position, keep paddle on the screen
-    paddle1_pos[1] -= paddle1_vel[1]
+    # left paddle (paddle1)
+    if paddle1_pos[1] >= 0 and paddle1_pos[1] <= HEIGHT - PAD_HEIGHT:
+        paddle1_pos[1] += paddle1_vel[1]
+    elif paddle1_pos[1] <= 0:
+        paddle1_pos[1] += 1
+    elif paddle1_pos[1] >= HEIGHT - PAD_HEIGHT:
+        paddle1_pos[1] -= 1
+    
+        
+    # right paddle (paddle2)
+    
     
     
     # draw paddles
@@ -92,11 +102,24 @@ def draw(canvas):
 def keydown(key):
     global paddle1_vel, paddle2_vel
     if key == simplegui.KEY_MAP["w"]:
-        paddle1_vel[1] += 1   
+        paddle1_vel[1] -= 1
+    elif key == simplegui.KEY_MAP["s"]:
+        paddle1_vel[1] += 1 
+    elif key == simplegui.KEY_MAP["up"]:
+        paddle2_vel[1] -= 1
+    elif key == simplegui.KEY_MAP["down"]:
+        paddle2_vel[1] += 1
 
 def keyup(key):
     global paddle1_vel, paddle2_vel
-
+    if key == simplegui.KEY_MAP["w"]:
+        paddle1_vel[1] = 0   
+    elif key == simplegui.KEY_MAP["s"]:
+        paddle1_vel[1] = 0
+    elif key == simplegui.KEY_MAP["up"]:
+        paddle2_vel[1] = 0
+    elif key == simplegui.KEY_MAP["down"]:
+        paddle2_vel[1] = 0
 
 # create frame
 frame = simplegui.create_frame("Pong", WIDTH, HEIGHT)
