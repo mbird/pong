@@ -13,6 +13,8 @@ HALF_PAD_WIDTH = PAD_WIDTH / 2
 HALF_PAD_HEIGHT = PAD_HEIGHT / 2
 LEFT = False
 RIGHT = True
+paddle1_pos = [0, HEIGHT / 2 - PAD_HEIGHT / 2]
+paddle2_pos = [(WIDTH - 1) - PAD_WIDTH, HEIGHT / 2 - PAD_HEIGHT / 2]
 paddle1_vel = [0, 0]
 paddle2_vel = [0, 0]
 
@@ -37,8 +39,7 @@ def new_game():
 
 def draw(canvas):
     global score1, score2, paddle1_pos, paddle2_pos, ball_pos, ball_vel
-    paddle1_pos = [0, HEIGHT / 2 - PAD_HEIGHT / 2]
-    paddle2_pos = [(WIDTH - 1) - PAD_WIDTH, HEIGHT / 2 - PAD_HEIGHT / 2]
+    
         
     # draw mid line and gutters
     canvas.draw_line([WIDTH / 2, 0],[WIDTH / 2, HEIGHT], 1, "White")
@@ -48,7 +49,7 @@ def draw(canvas):
     # update ball
     ball_pos[0] += ball_vel[0]
     ball_pos[1] += ball_vel[1]
-    print ball_pos
+    
             
     # draw ball
     canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "Black")
@@ -71,7 +72,7 @@ def draw(canvas):
     
     # update paddle's vertical position, keep paddle on the screen
     paddle1_pos[1] -= paddle1_vel[1]
-    print paddle1_pos
+    
     
     # draw paddles
     # left paddle (paddle1)
@@ -92,6 +93,7 @@ def keydown(key):
     global paddle1_vel, paddle2_vel
     if key == simplegui.KEY_MAP["w"]:
         paddle1_vel[1] += 1   
+
 def keyup(key):
     global paddle1_vel, paddle2_vel
 
