@@ -13,6 +13,8 @@ HALF_PAD_WIDTH = PAD_WIDTH / 2
 HALF_PAD_HEIGHT = PAD_HEIGHT / 2
 LEFT = False
 RIGHT = True
+paddle1_vel = [0, 0]
+paddle2_vel = [0, 0]
 
 
 # initialize ball_pos and ball_vel for new ball in middle of table
@@ -46,6 +48,7 @@ def draw(canvas):
     # update ball
     ball_pos[0] += ball_vel[0]
     ball_pos[1] += ball_vel[1]
+    print ball_pos
             
     # draw ball
     canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "Black")
@@ -67,7 +70,8 @@ def draw(canvas):
         ball_vel[1] = - ball_vel[1]
     
     # update paddle's vertical position, keep paddle on the screen
-    
+    paddle1_pos[1] -= paddle1_vel[1]
+    print paddle1_pos
     
     # draw paddles
     # left paddle (paddle1)
@@ -86,7 +90,8 @@ def draw(canvas):
         
 def keydown(key):
     global paddle1_vel, paddle2_vel
-   
+    if key == simplegui.KEY_MAP["w"]:
+        paddle1_vel[1] += 1   
 def keyup(key):
     global paddle1_vel, paddle2_vel
 
