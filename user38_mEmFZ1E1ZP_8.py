@@ -77,10 +77,10 @@ def draw(canvas):
                          [paddle1_pos[0], paddle1_pos[1] + PAD_HEIGHT]], 2, 'WHITE', "WHITE")
     
     # right paddle (paddle2)
-    canvas.draw_polygon([[(WIDTH - 1) - PAD_WIDTH, HEIGHT / 2 - PAD_HEIGHT / 2],
-                         [(WIDTH - 1), HEIGHT / 2 - PAD_HEIGHT / 2],
-                         [(WIDTH - 1), HEIGHT / 2 + PAD_HEIGHT / 2],
-                         [(WIDTH - 1) - PAD_WIDTH, HEIGHT / 2 + PAD_HEIGHT / 2]], 2, 'WHITE', "WHITE")
+    canvas.draw_polygon([paddle2_pos,
+                         [paddle2_pos[0] + PAD_WIDTH, paddle2_pos[1]],
+                         [paddle2_pos[0] + PAD_WIDTH, paddle2_pos[1] + PAD_HEIGHT],
+                         [paddle2_pos[0], paddle2_pos[1] + PAD_HEIGHT]], 2, 'WHITE', "WHITE")
     
     # draw scores
         
