@@ -113,13 +113,13 @@ def draw(canvas):
 def keydown(key):
     global paddle1_vel, paddle2_vel
     if key == simplegui.KEY_MAP["w"]:
-        paddle1_vel[1] -= 2
+        paddle1_vel[1] -= 6
     elif key == simplegui.KEY_MAP["s"]:
-        paddle1_vel[1] += 2 
+        paddle1_vel[1] += 6 
     elif key == simplegui.KEY_MAP["up"]:
-        paddle2_vel[1] -= 2
+        paddle2_vel[1] -= 6
     elif key == simplegui.KEY_MAP["down"]:
-        paddle2_vel[1] += 2
+        paddle2_vel[1] += 6
 
 def keyup(key):
     global paddle1_vel, paddle2_vel
