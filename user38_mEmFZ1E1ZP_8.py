@@ -104,13 +104,13 @@ def draw(canvas):
     canvas.draw_polygon([paddle1_pos,
                          [paddle1_pos[0] + PAD_WIDTH, paddle1_pos[1]],
                          [paddle1_pos[0] + PAD_WIDTH, paddle1_pos[1] + PAD_HEIGHT],
-                         [paddle1_pos[0], paddle1_pos[1] + PAD_HEIGHT]], 2, 'WHITE', "WHITE")
+                         [paddle1_pos[0], paddle1_pos[1] + PAD_HEIGHT]], 1, 'WHITE', "WHITE")
     
     # right paddle (paddle2)
     canvas.draw_polygon([paddle2_pos,
                          [paddle2_pos[0] + PAD_WIDTH, paddle2_pos[1]],
                          [paddle2_pos[0] + PAD_WIDTH, paddle2_pos[1] + PAD_HEIGHT],
-                         [paddle2_pos[0], paddle2_pos[1] + PAD_HEIGHT]], 2, 'WHITE', "WHITE")
+                         [paddle2_pos[0], paddle2_pos[1] + PAD_HEIGHT]], 1, 'WHITE', "WHITE")
     
     # draw scores
     canvas.draw_text(str(score1), (150, 75), 50, "White")
