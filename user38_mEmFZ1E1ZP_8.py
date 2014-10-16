@@ -37,6 +37,8 @@ def spawn_ball(direction):
 def new_game():
     global paddle1_pos, paddle2_pos, paddle1_vel, paddle2_vel  # these are numbers
     global score1, score2  # these are ints
+    score1 = 0
+    score2 = 0
     spawn_ball(RIGHT)
 
 def draw(canvas):
@@ -141,6 +143,7 @@ frame = simplegui.create_frame("Pong", WIDTH, HEIGHT)
 frame.set_draw_handler(draw)
 frame.set_keydown_handler(keydown)
 frame.set_keyup_handler(keyup)
+frame.add_button("Restart", new_game, 75)
 
 
 # start frame
