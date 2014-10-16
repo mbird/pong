@@ -29,9 +29,9 @@ def spawn_ball(direction):
     
     # set random initial velocity of ball
     if direction == RIGHT:
-        ball_vel = [random.randrange(2, 4), random.randrange(-2, -1)]
+        ball_vel = [random.randrange(2, 3), random.randrange(-2, -1)]
     elif direction == LEFT:
-        ball_vel = [random.randrange(-4, -2), random.randrange(-2, -1)]
+        ball_vel = [random.randrange(-3, -2), random.randrange(-2, -1)]
 
 # define event handlers
 def new_game():
@@ -39,6 +39,8 @@ def new_game():
     global score1, score2  # these are ints
     score1 = 0
     score2 = 0
+    paddle1_pos = [0, HEIGHT / 2 - PAD_HEIGHT / 2]
+    paddle2_pos = [(WIDTH - 1) - PAD_WIDTH, HEIGHT / 2 - PAD_HEIGHT / 2]
     spawn_ball(RIGHT)
 
 def draw(canvas):
