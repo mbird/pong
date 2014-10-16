@@ -17,6 +17,8 @@ paddle1_pos = [0, HEIGHT / 2 - PAD_HEIGHT / 2]
 paddle2_pos = [(WIDTH - 1) - PAD_WIDTH, HEIGHT / 2 - PAD_HEIGHT / 2]
 paddle1_vel = [0, 0]
 paddle2_vel = [0, 0]
+score1 = 0
+score2 = 0
 
 
 # initialize ball_pos and ball_vel for new ball in middle of table
@@ -27,9 +29,9 @@ def spawn_ball(direction):
     
     # set random initial velocity of ball
     if direction == RIGHT:
-        ball_vel = [random.randrange(2, 4), random.randrange(-4, -1)]
+        ball_vel = [random.randrange(2, 4), random.randrange(-2, -1)]
     elif direction == LEFT:
-        ball_vel = [random.randrange(-4, -2), random.randrange(-4, -1)]
+        ball_vel = [random.randrange(-4, -2), random.randrange(-2, -1)]
 
 # define event handlers
 def new_game():
@@ -56,12 +58,14 @@ def draw(canvas):
     
     # check whether the ball touches the paddles or the gutters
     if ball_pos[0] <= BALL_RADIUS + PAD_WIDTH and ball_pos[1] >= paddle1_pos[1] and ball_pos[1] <= paddle1_pos[1] + PAD_HEIGHT:
-        ball_vel[0] = - ball_vel[0]
+        ball_vel[0] = - ball_vel[0] * 1.1 # reflect ball and increase speed by 10%
     elif ball_pos[0] >= (WIDTH - 1) - BALL_RADIUS - PAD_WIDTH and ball_pos[1] >= paddle2_pos[1] and ball_pos[1] <= paddle2_pos[1] + PAD_HEIGHT:
-        ball_vel[0] = - ball_vel[0]
+        ball_vel[0] = - ball_vel[0] * 1.1 # reflect ball and increase speed by 10%
     elif ball_pos[0] <= BALL_RADIUS + PAD_WIDTH:
+        score2 += 1
         spawn_ball(RIGHT)
     elif ball_pos[0] >= (WIDTH - 1) - BALL_RADIUS - PAD_WIDTH:
+        score1 += 1
         spawn_ball(LEFT)
     
     # collide and reflect off walls
@@ -107,17 +111,19 @@ def draw(canvas):
                          [paddle2_pos[0], paddle2_pos[1] + PAD_HEIGHT]], 2, 'WHITE', "WHITE")
     
     # draw scores
+    canvas.draw_text(str(score1), (150, 75), 50, "White")
+    canvas.draw_text(str(score2), (450, 75), 50, "White")
         
 def keydown(key):
     global paddle1_vel, paddle2_vel
     if key == simplegui.KEY_MAP["w"]:
-        paddle1_vel[1] -= 1
+        paddle1_vel[1] -= 2
     elif key == simplegui.KEY_MAP["s"]:
-        paddle1_vel[1] += 1 
+        paddle1_vel[1] += 2 
     elif key == simplegui.KEY_MAP["up"]:
-        paddle2_vel[1] -= 1
+        paddle2_vel[1] -= 2
     elif key == simplegui.KEY_MAP["down"]:
-        paddle2_vel[1] += 1
+        paddle2_vel[1] += 2
 
 def keyup(key):
     global paddle1_vel, paddle2_vel
