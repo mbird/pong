@@ -58,7 +58,7 @@ def draw(canvas):
     
             
     # draw ball
-    canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "Black")
+    canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "White", "White")
     
     # check whether the ball touches the paddles or the gutters
     if ball_pos[0] <= BALL_RADIUS + PAD_WIDTH and ball_pos[1] >= paddle1_pos[1] and ball_pos[1] <= paddle1_pos[1] + PAD_HEIGHT:
